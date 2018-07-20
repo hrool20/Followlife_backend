@@ -44,7 +44,7 @@ app_config = {
 }
 
 
-def configure_environment(flask_app, my_env, my_path):
+def configure_environment(flask_app, my_env):
     # MySQL configurations
     flask_app.config.from_object(my_env)
     # flask_app.config.from_pyfile('Config.py', silent=False)
@@ -54,7 +54,7 @@ def configure_environment(flask_app, my_env, my_path):
                                                   my_env.DATABASE_DB
 
 app = Flask(__name__, instance_relative_config=True)
-configure_environment(app, app_config['env'], app_config['APP_CONFIG_FILE'])
+configure_environment(app, app_config['env'])
 # JWT
 app.config['JWT_AUTH_USERNAME_KEY'] = 'email'
 app.config['JWT_SECRET_KEY'] = 'followlife'
@@ -84,64 +84,82 @@ api.add_resource(Address, '/api/v1/addresses',
                  '/api/v1/addresses/',
                  '/api/v1/addresses/<string:_id>',
                  '/api/v1/addresses/<string:_id>/doctors')
+# noinspection PyTypeChecker
 api.add_resource(AppointmentDoctor, '/api/v1/doctors/<string:_id>/appointments',
                  '/api/v1/doctors/<string:_id>/appointments/',
                  '/api/v1/doctors/<string:_id>/appointments/<string:appointment_id>')
+# noinspection PyTypeChecker
 api.add_resource(AppointmentPatient, '/api/v1/patients/<string:_id>/appointments',
                  '/api/v1/patients/<string:_id>/appointments/',
                  '/api/v1/patients/<string:_id>/appointments/<string:appointment_id>')
+# noinspection PyTypeChecker
 api.add_resource(Device, '/api/v1/devices',
                  '/api/v1/devices/',
                  '/api/v1/devices/<string:_id>')
+# noinspection PyTypeChecker
 api.add_resource(District, '/api/v1/districts',
                  '/api/v1/districts/',
                  '/api/v1/districts/<string:_id>')
+# noinspection PyTypeChecker
 api.add_resource(Doctor, '/api/v1/doctors',
                  '/api/v1/doctors/',
                  '/api/v1/doctors/<string:_id>')
+# noinspection PyTypeChecker
 api.add_resource(DoctorSpeciality, '/api/v1/doctors/<string:_id>/doctor_specialities',
                  '/api/v1/doctors/<string:_id>/doctor_specialities/',
                  '/api/v1/doctors/<string:_id>/doctor_specialities/<string:doc_spec_id>')
 # api.add_resource(Indicator, '/api/v1/users', '/api/v1/users/<string:_id>')
 # api.add_resource(IndicatorEntry, '/api/v1/users', '/api/v1/users/<string:_id>')
 # api.add_resource(IndicatorType, '/api/v1/users', '/api/v1/users/<string:_id>')
+# noinspection PyTypeChecker
 api.add_resource(MedicalSpeciality, '/api/v1/medical_specialities',
                  '/api/v1/medical_specialities/',
                  '/api/v1/medical_specialities/<string:_id>')
+# noinspection PyTypeChecker
 api.add_resource(MembershipDoctor, '/api/v1/doctors/<string:doctor_id>/membership',
                  '/api/v1/doctors/<string:doctor_id>/membership/',
                  '/api/v1/doctors/<string:doctor_id>/patients',
                  '/api/v1/doctors/<string:doctor_id>/patients/',
                  '/api/v1/doctors/<string:doctor_id>/patients/<string:_id>')
+# noinspection PyTypeChecker
 api.add_resource(MembershipPatient, '/api/v1/patients/<string:patient_id>/membership',
                  '/api/v1/patients/<string:patient_id>/membership/',
                  '/api/v1/patients/<string:patient_id>/doctors',
                  '/api/v1/patients/<string:patient_id>/doctors/',
                  '/api/v1/patients/<string:patient_id>/doctors/<string:_id>')
+# noinspection PyTypeChecker
 api.add_resource(Patient, '/api/v1/patients',
                  '/api/v1/patients/',
                  '/api/v1/patients/<string:_id>')
+# noinspection PyTypeChecker
 api.add_resource(Plan, '/api/v1/plans',
                  '/api/v1/plans/',
                  '/api/v1/plans/<string:_id>')
+# noinspection PyTypeChecker
 api.add_resource(PrescriptionDoctor, '/api/v1/doctors/<string:doctor_id>/patients/<string:patient_id>/prescriptions',
                  '/api/v1/doctors/<string:doctor_id>/patients/<string:patient_id>/prescriptions/',
                  '/api/v1/doctors/<string:doctor_id>/patients/<string:patient_id>/prescriptions/<string:_id>')
+# noinspection PyTypeChecker
 api.add_resource(PrescriptionPatient, '/api/v1/patients/<string:patient_id>/doctors/<string:doctor_id>/prescriptions',
                  '/api/v1/patients/<string:patient_id>/doctors/<string:doctor_id>/prescriptions/',
                  '/api/v1/patients/<string:patient_id>/doctors/<string:doctor_id>/prescriptions/<string:_id>')
+# noinspection PyTypeChecker
 api.add_resource(PrescriptionType, '/api/v1/prescriptions_type',
                  '/api/v1/prescriptions_type/',
                  '/api/v1/prescriptions_type/<string:_id>')
+# noinspection PyTypeChecker
 api.add_resource(Role, '/api/v1/roles',
                  '/api/v1/roles',
                  '/api/v1/roles/<string:_id>')
+# noinspection PyTypeChecker
 api.add_resource(UnitOfMeasure, '/api/v1/units_of_measure',
                  '/api/v1/units_of_measure/',
                  '/api/v1/units_of_measure/<string:_id>')
+# noinspection PyTypeChecker
 api.add_resource(User, '/api/v1/users',
                  '/api/v1/users/',
                  '/api/v1/users/<string:_id>')
+# noinspection PyTypeChecker
 api.add_resource(Login, '/api/v1/login',
                  '/api/v1/login/',
                  '/api/v1/auth')
