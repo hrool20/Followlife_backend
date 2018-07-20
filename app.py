@@ -8,6 +8,7 @@ from flask_restful import Api
 
 from config.DevelopmentEnvironment import DevelopmentEnvironment
 from config.LocalEnvironment import LocalEnvironment
+from models.BaseClasses import BaseResponse
 from models.District import DistrictModel
 from models.Doctor import DoctorModel
 from models.MedicalSpeciality import MedicalSpecialityModel
@@ -62,6 +63,21 @@ app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=24)
 # noinspection PyTypeChecker
 api = Api(app)
 jwt = JWTManager(app)
+
+
+@jwt.expired_token_loader
+def expired_token_callback():
+    return BaseResponse.unauthorized_response('Expired token.')
+
+
+@jwt.invalid_token_loader
+def invalid_token_callback(error):
+    return BaseResponse.unauthorized_response('Invalid token: ' + error)
+
+
+@jwt.unauthorized_loader
+def unauthorized_callback(error):
+    return BaseResponse.unauthorized_response(error)
 
 
 # noinspection PyTypeChecker

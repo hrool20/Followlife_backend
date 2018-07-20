@@ -2,7 +2,7 @@ from .Default import Config
 
 
 class DevelopmentEnvironment(Config):
-    DEBUG = False
+    DEBUG = True
     DATABASE_USER = 'bea3c415eaaaa7'
     DATABASE_PASSWORD = 'fd8cd26b'
     DATABASE_DB = 'heroku_351798eba9c5582'

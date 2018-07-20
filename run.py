@@ -265,19 +265,3 @@ def load_tables():
 def create_tables():
     db.create_all(app=app)
     load_tables()
-
-
-@jwt.expired_token_loader
-def expired_token_callback():
-    return BaseResponse.unauthorized_response('Expired token.')
-
-
-@jwt.invalid_token_loader
-def invalid_token_callback(error):
-    return BaseResponse.unauthorized_response('Invalid token: ' + error)
-
-
-@jwt.unauthorized_loader
-def unauthorized_callback(error):
-    return BaseResponse.unauthorized_response(error)
-
