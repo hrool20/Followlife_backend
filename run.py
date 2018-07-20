@@ -1,8 +1,9 @@
 # coding=utf-8
 from flask_migrate import Migrate
 
-from app import app
+from app import app, jwt
 from db import db
+from models.BaseClasses import BaseResponse
 from models.District import DistrictModel
 from models.Doctor import DoctorModel
 from models.MedicalSpeciality import MedicalSpecialityModel
@@ -264,3 +265,19 @@ def load_tables():
 def create_tables():
     db.create_all(app=app)
     load_tables()
+
+
+@jwt.expired_token_loader
+def expired_token_callback():
+    return BaseResponse.unauthorized_response('Expired token.')
+
+
+@jwt.invalid_token_loader
+def invalid_token_callback(error):
+    return BaseResponse.unauthorized_response('Invalid token: ' + error)
+
+
+@jwt.unauthorized_loader
+def unauthorized_callback(error):
+    return BaseResponse.unauthorized_response(error)
+

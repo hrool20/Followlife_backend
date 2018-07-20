@@ -8,7 +8,6 @@ from flask_restful import Api
 
 from config.DevelopmentEnvironment import DevelopmentEnvironment
 from config.LocalEnvironment import LocalEnvironment
-from models.BaseClasses import BaseResponse
 from models.District import DistrictModel
 from models.Doctor import DoctorModel
 from models.MedicalSpeciality import MedicalSpecialityModel
@@ -38,9 +37,10 @@ from resources.Role import Role
 from resources.UnitsOfMeasure import UnitOfMeasure
 from resources.User import User
 
+my_var = True
 app_config = {
-    'env': DevelopmentEnvironment,
-    'APP_CONFIG_FILE': 'config/DevelopmentEnvironment.py'
+    'env': DevelopmentEnvironment if my_var is True else LocalEnvironment,
+    'APP_CONFIG_FILE': 'config/DevelopmentEnvironment.py' if my_var is True else 'config/LocalEnvironment.py'
 }
 
 
@@ -62,21 +62,6 @@ app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=24)
 # noinspection PyTypeChecker
 api = Api(app)
 jwt = JWTManager(app)
-
-
-@jwt.expired_token_loader
-def expired_token_callback():
-    return BaseResponse.unauthorized_response('Expired token.')
-
-
-@jwt.invalid_token_loader
-def invalid_token_callback(error):
-    return BaseResponse.unauthorized_response('Invalid token: ' + error)
-
-
-@jwt.unauthorized_loader
-def unauthorized_callback(error):
-    return BaseResponse.unauthorized_response(error)
 
 
 # noinspection PyTypeChecker
@@ -368,16 +353,20 @@ if __name__ == '__main__':
         # User
         if UserModel.query.first() is None:
             user1 = UserModel(1, 'admin',
-                              'pbkdf2:sha256:50$XJfN5axB$9085ca50638eb956ab238f650b11896a6810887fa3e13f063406b838ddc1ff3b',
+                              'pbkdf2:sha256'
+                              ':50$XJfN5axB$9085ca50638eb956ab238f650b11896a6810887fa3e13f063406b838ddc1ff3b',
                               'Hugo Andres', 'Rosado Oliden', '944479181', None, '01.02.03.04', None, None, None)
             user2 = UserModel(1, 'dani@hotmail.com',
-                              'pbkdf2:sha256:50$6N2VRxhu$15d2e00aecff3ab9a797532efa8e11129f6c6ada6157fbbeef8818efb1ad9bcf',
+                              'pbkdf2:sha256'
+                              ':50$6N2VRxhu$15d2e00aecff3ab9a797532efa8e11129f6c6ada6157fbbeef8818efb1ad9bcf',
                               'Dani Alonso', 'Romera Alves', '987654321', None, '04.03.02.01', None, None, None)
             user3 = UserModel(2, 'patient@hotmail.com',
-                              'pbkdf2:sha256:50$6N2VRxhu$15d2e00aecff3ab9a797532efa8e11129f6c6ada6157fbbeef8818efb1ad9bcf',
+                              'pbkdf2:sha256'
+                              ':50$6N2VRxhu$15d2e00aecff3ab9a797532efa8e11129f6c6ada6157fbbeef8818efb1ad9bcf',
                               'José María', 'Zapata Giménez', '91827364', None, '05.06.07.08', None, None, None)
             user4 = UserModel(2, 'patient',
-                              'pbkdf2:sha256:50$4wQeHHga$4b178248f66a23a25ab58c32ecc982a8ad7602e4bcf51406ce01908910b8bd42',
+                              'pbkdf2:sha256'
+                              ':50$4wQeHHga$4b178248f66a23a25ab58c32ecc982a8ad7602e4bcf51406ce01908910b8bd42',
                               'Rosa Luz', 'Ramirez Falcón', '647382915', None, '08.07.06.05', None, None, None)
 
             users = [user1, user2, user3, user4]
