@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="60ffc429-8525-488b-9236-4537a32e0f16" name="Default" comment="&quot;run.py&quot; added and app..">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/run.py" />
+    <list default="true" id="60ffc429-8525-488b-9236-4537a32e0f16" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uwsgi.ini" afterPath="$PROJECT_DIR$/uwsgi.ini" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,7 +35,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="508">
@@ -57,10 +57,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="run.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="uwsgi.ini" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/uwsgi.ini">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="84">
+              <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="run.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
+            <state relative-caret-position="214">
               <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
                 <element signature="e#15#48#0" expanded="true" />
@@ -137,10 +147,10 @@
         <option value="$PROJECT_DIR$/resources/Role.py" />
         <option value="$PROJECT_DIR$/resources/UnitsOfMeasure.py" />
         <option value="$PROJECT_DIR$/resources/User.py" />
-        <option value="$PROJECT_DIR$/uwsgi.ini" />
         <option value="$PROJECT_DIR$/db.py" />
         <option value="$PROJECT_DIR$/run.py" />
         <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/uwsgi.ini" />
       </list>
     </option>
   </component>
@@ -314,7 +324,14 @@
       <option name="project" value="LOCAL" />
       <updated>1532063532769</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="&quot;run.py&quot; added.">
+      <created>1532065626710</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1532065626710</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -360,7 +377,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Heroku deploy files added." />
-    <option name="LAST_COMMIT_MESSAGE" value="Heroku deploy files added." />
+    <MESSAGE value="&quot;run.py&quot; added." />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;run.py&quot; added." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -773,13 +791,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/uwsgi.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
@@ -793,26 +804,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <element signature="e#15#48#0" expanded="true" />
-            <element signature="e#551#12700#0" expanded="false" />
-            <element signature="e#730#4892#0" expanded="false" />
-            <element signature="e#4953#5739#0" expanded="false" />
-            <element signature="e#5800#6006#0" expanded="false" />
-            <element signature="e#6094#8702#0" expanded="false" />
-            <element signature="e#8788#9300#0" expanded="false" />
-            <element signature="e#9381#10678#0" expanded="false" />
-            <element signature="e#10739#11967#0" expanded="false" />
-            <element signature="e#12032#12311#0" expanded="false" />
-            <element signature="e#12378#12691#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -832,6 +823,34 @@
             <marker date="1532065605520" expanded="false" signature="18595:19900" ph="..." />
             <marker date="1532065605520" expanded="false" signature="19964:20280" ph="..." />
             <marker date="1532065605520" expanded="false" signature="20346:20696" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uwsgi.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="e#15#48#0" expanded="true" />
+            <element signature="e#551#12700#0" expanded="false" />
+            <element signature="e#730#4892#0" expanded="false" />
+            <element signature="e#4953#5739#0" expanded="false" />
+            <element signature="e#5800#6006#0" expanded="false" />
+            <element signature="e#6094#8702#0" expanded="false" />
+            <element signature="e#8788#9300#0" expanded="false" />
+            <element signature="e#9381#10678#0" expanded="false" />
+            <element signature="e#10739#11967#0" expanded="false" />
+            <element signature="e#12032#12311#0" expanded="false" />
+            <element signature="e#12378#12691#0" expanded="false" />
           </folding>
         </state>
       </provider>
