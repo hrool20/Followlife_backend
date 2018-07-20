@@ -39,8 +39,8 @@ from resources.UnitsOfMeasure import UnitOfMeasure
 from resources.User import User
 
 app_config = {
-    'env': LocalEnvironment,
-    'APP_CONFIG_FILE': 'config/LocalEnvironment.py'
+    'env': DevelopmentEnvironment,
+    'APP_CONFIG_FILE': 'config/DevelopmentEnvironment.py'
 }
 
 
