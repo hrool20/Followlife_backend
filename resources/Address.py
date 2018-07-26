@@ -35,7 +35,7 @@ class Address(Resource):
                         help='This field cannot be left blank.')
 
     @jwt_required
-    def get(self, _id=None, ):
+    def get(self, _id=None):
         if _id:
             address = AddressModel.find_by_id(_id)
             doctors_list = True if 'doctors' in request.path else False

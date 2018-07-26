@@ -36,13 +36,13 @@ class AppointmentDoctor(Resource):
                         help='This field cannot be left blank.')
 
     @jwt_required
-    def get(self, _id=None, appointment_id=None):
-        doctor = DoctorModel.find_by_id(_id)
+    def get(self, doctor_id=None, _id=None):
+        doctor = DoctorModel.find_by_id(doctor_id)
         if doctor is None:
             return BaseResponse.bad_request_response('Doctor does not exists.', {})
 
-        if appointment_id:
-            appointment = AppointmentModel.find_by_id(appointment_id)
+        if _id:
+            appointment = AppointmentModel.find_by_id(_id)
             if appointment:
                 return BaseResponse.ok_response('Successful.', appointment.json(role_id=1))
             return BaseResponse.bad_request_response('Appointment does not exists.', {})
@@ -52,16 +52,16 @@ class AppointmentDoctor(Resource):
             return BaseResponse.ok_response('Successful.', appointments)
 
     @jwt_required
-    def post(self, _id=None):
+    def post(self, doctor_id=None):
         try:
             data = AppointmentDoctor.parser.parse_args()
 
-            if DoctorModel.find_by_id(_id) is None:
+            if DoctorModel.find_by_id(doctor_id) is None:
                 return BaseResponse.bad_request_response('Doctor does not exists.', {})
             elif AppointmentModel.find_by_appointment_date(data['appointmentDate']):
                 return BaseResponse.bad_request_response('An appointment is already scheduled in that date.', {})
 
-            appointment = AppointmentModel(doctor_id=_id, patient_id=data['patientId'],
+            appointment = AppointmentModel(doctor_id=doctor_id, patient_id=data['patientId'],
                                            appointment_date=data['appointmentDate'], reason=data['reason'],
                                            created_at=None, canceled_at=data['canceledAt'], updated_on=None,
                                            status=None)
@@ -73,14 +73,14 @@ class AppointmentDoctor(Resource):
             return BaseResponse.server_error_response(unicode(e))
 
     @jwt_required
-    def put(self, _id=None, appointment_id=None):
+    def put(self, doctor_id=None, _id=None):
         try:
             data = AppointmentDoctor.parser.parse_args()
 
-            if DoctorModel.find_by_id(_id) is None:
+            if DoctorModel.find_by_id(doctor_id) is None:
                 return BaseResponse.bad_request_response('Doctor does not exists.', {})
 
-            appointment = AppointmentModel.find_by_id(appointment_id)
+            appointment = AppointmentModel.find_by_id(_id)
             if appointment:
                 appointment.appointmentDate = data['appointmentDate'] if (data['appointmentDate'] is not None) \
                     else appointment.appointmentDate
@@ -98,12 +98,12 @@ class AppointmentDoctor(Resource):
             return BaseResponse.server_error_response(str(e))
 
     @jwt_required
-    def delete(self, _id=None, appointment_id=None):
+    def delete(self, doctor_id=None, _id=None):
         try:
-            if DoctorModel.find_by_id(_id) is None:
+            if DoctorModel.find_by_id(doctor_id) is None:
                 return BaseResponse.bad_request_response('Doctor does not exists.', {})
 
-            appointment = AppointmentModel.find_by_id(appointment_id)
+            appointment = AppointmentModel.find_by_id(_id)
             if appointment:
                 appointment.status = 'INA'
                 appointment.updatedOn = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -146,13 +146,13 @@ class AppointmentPatient(Resource):
                         help='This field cannot be left blank.')
 
     @jwt_required
-    def get(self, _id=None, appointment_id=None):
-        patient = PatientModel.find_by_id(_id)
+    def get(self, patient_id=None, _id=None):
+        patient = PatientModel.find_by_id(patient_id)
         if patient is None:
             return BaseResponse.bad_request_response('Patient does not exists.', {})
 
-        if appointment_id:
-            appointment = AppointmentModel.find_by_id(appointment_id)
+        if _id:
+            appointment = AppointmentModel.find_by_id(_id)
             if appointment:
                 return BaseResponse.ok_response('Successful.', appointment.json(role_id=2))
             return BaseResponse.bad_request_response('Appointment does not exists.', {})
@@ -162,16 +162,16 @@ class AppointmentPatient(Resource):
             return BaseResponse.ok_response('Successful.', appointments)
 
     @jwt_required
-    def post(self, _id=None):
+    def post(self, patient_id=None):
         try:
             data = AppointmentPatient.parser.parse_args()
 
-            if PatientModel.find_by_id(_id) is None:
+            if PatientModel.find_by_id(patient_id) is None:
                 return BaseResponse.bad_request_response('Patient does not exists.', {})
             elif AppointmentModel.find_by_appointment_date(data['appointmentDate']):
                 return BaseResponse.bad_request_response('An appointment already exists in that date.', {})
 
-            appointment = AppointmentModel(doctor_id=data['doctorId'], patient_id=_id,
+            appointment = AppointmentModel(doctor_id=data['doctorId'], patient_id=patient_id,
                                            appointment_date=data['appointmentDate'], reason=data['reason'],
                                            created_at=None, canceled_at=data['canceledAt'], updated_on=None,
                                            status='INA')
@@ -183,14 +183,14 @@ class AppointmentPatient(Resource):
             return BaseResponse.server_error_response(str(e))
 
     @jwt_required
-    def put(self, _id=None, appointment_id=None):
+    def put(self, patient_id=None, _id=None):
         try:
             data = AppointmentPatient.parser.parse_args()
 
-            if PatientModel.find_by_id(_id) is None:
+            if PatientModel.find_by_id(patient_id) is None:
                 return BaseResponse.bad_request_response('Patient does not exists.', {})
 
-            appointment = AppointmentModel.find_by_id(appointment_id)
+            appointment = AppointmentModel.find_by_id(_id)
             if appointment:
                 appointment.appointmentDate = data['appointmentDate'] if (data['appointmentDate'] is not None) \
                     else appointment.appointmentDate
@@ -208,12 +208,12 @@ class AppointmentPatient(Resource):
             return BaseResponse.server_error_response(str(e))
 
     @jwt_required
-    def delete(self, _id=None, appointment_id=None):
+    def delete(self, patient_id=None, _id=None):
         try:
-            if PatientModel.find_by_id(_id) is None:
+            if PatientModel.find_by_id(patient_id) is None:
                 return BaseResponse.bad_request_response('Patient does not exists.', {})
 
-            appointment = AppointmentModel.find_by_id(appointment_id)
+            appointment = AppointmentModel.find_by_id(_id)
             if appointment:
                 appointment.status = 'INA'
                 appointment.updatedOn = datetime.now().strftime('%Y-%m-%d %H:%M:%S')

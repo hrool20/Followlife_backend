@@ -5,6 +5,7 @@ from flask.app import Flask
 from flask_jwt_extended.jwt_manager import JWTManager
 from flask_migrate import Migrate
 from flask_restful import Api
+from flasgger import Swagger
 
 from config.DevelopmentEnvironment import DevelopmentEnvironment
 from config.LocalEnvironment import LocalEnvironment
@@ -38,7 +39,7 @@ from resources.Role import Role
 from resources.UnitsOfMeasure import UnitOfMeasure
 from resources.User import User
 
-my_var = True
+my_var = False
 app_config = {
     'env': DevelopmentEnvironment if my_var is True else LocalEnvironment,
     'APP_CONFIG_FILE': 'config/DevelopmentEnvironment.py' if my_var is True else 'config/LocalEnvironment.py'
@@ -60,9 +61,17 @@ configure_environment(app, app_config['env'])
 app.config['JWT_AUTH_USERNAME_KEY'] = 'email'
 app.config['JWT_SECRET_KEY'] = 'followlife'
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=24)
-# noinspection PyTypeChecker
-api = Api(app)
 jwt = JWTManager(app)
+swagger = Swagger(app)
+api_error = {
+    'MethodNotAllowed': {
+        'status': 405,
+        'message': 'The method is not allowed for the requested URL.',
+        'result': {}
+    }
+}
+# noinspection PyTypeChecker
+api = Api(app, errors=api_error)
 
 
 @jwt.expired_token_loader
@@ -80,90 +89,207 @@ def unauthorized_callback(error):
     return BaseResponse.unauthorized_response(error)
 
 
-# noinspection PyTypeChecker
-api.add_resource(Address, '/api/v1/addresses',
+# Address
+api.add_resource(Address,
+                 '/api/v1/addresses',
                  '/api/v1/addresses/',
+                 endpoint='/addresses',
+                 methods=['GET', 'POST'])
+api.add_resource(Address,
+                 '/api/v1/addresses/<string:_id>/doctors',
+                 endpoint='/addresses/doctors',
+                 methods=['GET'])
+api.add_resource(Address,
                  '/api/v1/addresses/<string:_id>',
-                 '/api/v1/addresses/<string:_id>/doctors')
-# noinspection PyTypeChecker
-api.add_resource(AppointmentDoctor, '/api/v1/doctors/<string:_id>/appointments',
-                 '/api/v1/doctors/<string:_id>/appointments/',
-                 '/api/v1/doctors/<string:_id>/appointments/<string:appointment_id>')
-# noinspection PyTypeChecker
-api.add_resource(AppointmentPatient, '/api/v1/patients/<string:_id>/appointments',
-                 '/api/v1/patients/<string:_id>/appointments/',
-                 '/api/v1/patients/<string:_id>/appointments/<string:appointment_id>')
-# noinspection PyTypeChecker
-api.add_resource(Device, '/api/v1/devices',
+                 endpoint='/addresses/_id',
+                 methods=['GET', 'PUT', 'DELETE'])
+# AppointmentDoctor
+api.add_resource(AppointmentDoctor,
+                 '/api/v1/doctors/<string:doctor_id>/appointments',
+                 '/api/v1/doctors/<string:doctor_id>/appointments/',
+                 endpoint='/appointments_doctor',
+                 methods=['GET', 'POST'])
+api.add_resource(AppointmentDoctor,
+                 '/api/v1/doctors/<string:doctor_id>/appointments/<string:_id>',
+                 endpoint='/appointments_doctor/_id',
+                 methods=['GET', 'PUT', 'DELETE'])
+# AppointmentPatient
+api.add_resource(AppointmentPatient,
+                 '/api/v1/patients/<string:patient_id>/appointments',
+                 '/api/v1/patients/<string:patient_id>/appointments/',
+                 endpoint='/appointments_patient',
+                 methods=['GET', 'POST'])
+api.add_resource(AppointmentPatient,
+                 '/api/v1/patients/<string:patient_id>/appointments/<string:_id>',
+                 endpoint='/appointments_patient/_id',
+                 methods=['GET', 'PUT', 'DELETE'])
+# Device
+api.add_resource(Device,
+                 '/api/v1/devices',
                  '/api/v1/devices/',
-                 '/api/v1/devices/<string:_id>')
-# noinspection PyTypeChecker
-api.add_resource(District, '/api/v1/districts',
+                 endpoint='/devices',
+                 methods=['GET', 'POST'])
+api.add_resource(Device,
+                 '/api/v1/devices/<string:_id>',
+                 endpoint='/devices/_id',
+                 methods=['GET', 'PUT', 'DELETE'])
+# District
+api.add_resource(District,
+                 '/api/v1/districts',
                  '/api/v1/districts/',
-                 '/api/v1/districts/<string:_id>')
-# noinspection PyTypeChecker
-api.add_resource(Doctor, '/api/v1/doctors',
+                 endpoint='/districts',
+                 methods=['GET', 'POST'])
+api.add_resource(District,
+                 '/api/v1/districts/<string:_id>',
+                 endpoint='/districts/_id',
+                 methods=['GET', 'PUT', 'DELETE'])
+# Doctor
+api.add_resource(Doctor,
+                 '/api/v1/doctors',
                  '/api/v1/doctors/',
-                 '/api/v1/doctors/<string:_id>')
-# noinspection PyTypeChecker
-api.add_resource(DoctorSpeciality, '/api/v1/doctors/<string:_id>/doctor_specialities',
-                 '/api/v1/doctors/<string:_id>/doctor_specialities/',
-                 '/api/v1/doctors/<string:_id>/doctor_specialities/<string:doc_spec_id>')
+                 endpoint='/doctors',
+                 methods=['GET', 'POST'])
+api.add_resource(Doctor,
+                 '/api/v1/doctors/<string:_id>',
+                 endpoint='/doctors/_id',
+                 methods=['GET', 'PUT', 'DELETE'])
+# DoctorSpeciality
+api.add_resource(DoctorSpeciality,
+                 '/api/v1/doctors/<string:doctor_id>/doctor_specialities',
+                 '/api/v1/doctors/<string:doctor_id>/doctor_specialities/',
+                 endpoint='/doctor_specialities',
+                 methods=['GET', 'POST'])
+api.add_resource(DoctorSpeciality,
+                 '/api/v1/doctors/<string:doctor_id>/doctor_specialities/<string:_id>',
+                 endpoint='/doctor_specialities/_id',
+                 methods=['GET', 'PUT', 'DELETE'])
 # api.add_resource(Indicator, '/api/v1/users', '/api/v1/users/<string:_id>')
 # api.add_resource(IndicatorEntry, '/api/v1/users', '/api/v1/users/<string:_id>')
 # api.add_resource(IndicatorType, '/api/v1/users', '/api/v1/users/<string:_id>')
-# noinspection PyTypeChecker
-api.add_resource(MedicalSpeciality, '/api/v1/medical_specialities',
+# MedicalSpeciality
+api.add_resource(MedicalSpeciality,
+                 '/api/v1/medical_specialities',
                  '/api/v1/medical_specialities/',
-                 '/api/v1/medical_specialities/<string:_id>')
-# noinspection PyTypeChecker
-api.add_resource(MembershipDoctor, '/api/v1/doctors/<string:doctor_id>/membership',
+                 endpoint='/medical_specialities',
+                 methods=['GET', 'POST'])
+api.add_resource(MedicalSpeciality,
+                 '/api/v1/medical_specialities/<string:_id>',
+                 endpoint='/medical_specialities/_id',
+                 methods=['GET', 'PUT', 'DELETE'])
+# MembershipDoctor
+api.add_resource(MembershipDoctor,
+                 '/api/v1/doctors/<string:doctor_id>/membership',
                  '/api/v1/doctors/<string:doctor_id>/membership/',
+                 endpoint='/membership_doctor',
+                 methods=['GET', 'POST'])
+api.add_resource(MembershipDoctor,
                  '/api/v1/doctors/<string:doctor_id>/patients',
                  '/api/v1/doctors/<string:doctor_id>/patients/',
-                 '/api/v1/doctors/<string:doctor_id>/patients/<string:_id>')
-# noinspection PyTypeChecker
-api.add_resource(MembershipPatient, '/api/v1/patients/<string:patient_id>/membership',
+                 endpoint='/membership_doctor/patient',
+                 methods=['GET'])
+api.add_resource(MembershipDoctor,
+                 '/api/v1/doctors/<string:doctor_id>/patients/<string:_id>',
+                 endpoint='/membership_doctor/_id',
+                 methods=['GET', 'PUT', 'DELETE']
+                 )
+# MembershipPatient
+api.add_resource(MembershipPatient,
+                 '/api/v1/patients/<string:patient_id>/membership',
                  '/api/v1/patients/<string:patient_id>/membership/',
                  '/api/v1/patients/<string:patient_id>/doctors',
                  '/api/v1/patients/<string:patient_id>/doctors/',
-                 '/api/v1/patients/<string:patient_id>/doctors/<string:_id>')
-# noinspection PyTypeChecker
-api.add_resource(Patient, '/api/v1/patients',
+                 endpoint='/membership_patient',
+                 methods=['GET'])
+api.add_resource(MembershipPatient,
+                 '/api/v1/patients/<string:patient_id>/doctors/<string:_id>',
+                 endpoint='/membership_patient/_id',
+                 methods=['GET', 'PUT'])
+# Patient
+api.add_resource(Patient,
+                 '/api/v1/patients',
                  '/api/v1/patients/',
-                 '/api/v1/patients/<string:_id>')
-# noinspection PyTypeChecker
-api.add_resource(Plan, '/api/v1/plans',
+                 endpoint='/patients',
+                 methods=['GET', 'POST'])
+api.add_resource(Patient,
+                 '/api/v1/patients/<string:_id>',
+                 endpoint='/patients/_id',
+                 methods=['GET', 'PUT', 'DELETE'])
+# Plan
+api.add_resource(Plan,
+                 '/api/v1/plans',
                  '/api/v1/plans/',
-                 '/api/v1/plans/<string:_id>')
-# noinspection PyTypeChecker
-api.add_resource(PrescriptionDoctor, '/api/v1/doctors/<string:doctor_id>/patients/<string:patient_id>/prescriptions',
+                 endpoint='/plans',
+                 methods=['GET', 'POST'])
+api.add_resource(Plan,
+                 '/api/v1/plans/<string:_id>',
+                 endpoint='/plans/_id',
+                 methods=['GET', 'PUT', 'DELETE'])
+# PrescriptionDoctor
+api.add_resource(PrescriptionDoctor,
+                 '/api/v1/doctors/<string:doctor_id>/patients/<string:patient_id>/prescriptions',
                  '/api/v1/doctors/<string:doctor_id>/patients/<string:patient_id>/prescriptions/',
-                 '/api/v1/doctors/<string:doctor_id>/patients/<string:patient_id>/prescriptions/<string:_id>')
-# noinspection PyTypeChecker
-api.add_resource(PrescriptionPatient, '/api/v1/patients/<string:patient_id>/doctors/<string:doctor_id>/prescriptions',
+                 endpoint='/prescriptions_doctor',
+                 methods=['GET', 'POST'])
+api.add_resource(PrescriptionDoctor,
+                 '/api/v1/doctors/<string:doctor_id>/patients/<string:patient_id>/prescriptions/<string:_id>',
+                 endpoint='/prescriptions_doctor/_id',
+                 methods=['GET', 'PUT', 'DELETE'])
+# PrescriptionPatient
+api.add_resource(PrescriptionPatient,
+                 '/api/v1/patients/<string:patient_id>/doctors/<string:doctor_id>/prescriptions',
                  '/api/v1/patients/<string:patient_id>/doctors/<string:doctor_id>/prescriptions/',
-                 '/api/v1/patients/<string:patient_id>/doctors/<string:doctor_id>/prescriptions/<string:_id>')
-# noinspection PyTypeChecker
-api.add_resource(PrescriptionType, '/api/v1/prescriptions_type',
+                 endpoint='/prescriptions_patient',
+                 methods=['GET', 'POST'])
+api.add_resource(PrescriptionPatient,
+                 '/api/v1/patients/<string:patient_id>/doctors/<string:doctor_id>/prescriptions/<string:_id>',
+                 endpoint='/prescriptions_patient/_id',
+                 methods=['GET', 'PUT', 'DELETE'])
+# PrescriptionType
+api.add_resource(PrescriptionType,
+                 '/api/v1/prescriptions_type',
                  '/api/v1/prescriptions_type/',
-                 '/api/v1/prescriptions_type/<string:_id>')
-# noinspection PyTypeChecker
-api.add_resource(Role, '/api/v1/roles',
+                 endpoint='/prescriptions_type',
+                 methods=['GET', 'POST'])
+api.add_resource(PrescriptionType,
+                 '/api/v1/prescriptions_type/<string:_id>',
+                 endpoint='/prescriptions_type/_id',
+                 methods=['GET', 'PUT', 'DELETE'])
+# Role
+api.add_resource(Role,
                  '/api/v1/roles',
-                 '/api/v1/roles/<string:_id>')
-# noinspection PyTypeChecker
-api.add_resource(UnitOfMeasure, '/api/v1/units_of_measure',
+                 '/api/v1/roles/',
+                 endpoint='/roles',
+                 methods=['GET', 'POST'])
+api.add_resource(Role,
+                 '/api/v1/roles/<string:_id>',
+                 endpoint='/roles/_id',
+                 methods=['GET', 'PUT', 'DELETE'])
+# UnitOfMeasure
+api.add_resource(UnitOfMeasure,
+                 '/api/v1/units_of_measure',
                  '/api/v1/units_of_measure/',
-                 '/api/v1/units_of_measure/<string:_id>')
-# noinspection PyTypeChecker
-api.add_resource(User, '/api/v1/users',
+                 endpoint='/units_of_measure',
+                 methods=['GET', 'POST'])
+api.add_resource(UnitOfMeasure,
+                 '/api/v1/units_of_measure/<string:_id>',
+                 endpoint='/units_of_measure/_id',
+                 methods=['GET', 'PUT', 'DELETE'])
+# User
+api.add_resource(User,
+                 '/api/v1/users',
                  '/api/v1/users/',
-                 '/api/v1/users/<string:_id>')
-# noinspection PyTypeChecker
-api.add_resource(Login, '/api/v1/login',
+                 endpoint='/users',
+                 methods=['GET', 'POST'])
+api.add_resource(User,
+                 '/api/v1/users/<string:_id>',
+                 endpoint='/users/_id',
+                 methods=['GET', 'PUT', 'DELETE'])
+# Login
+api.add_resource(Login,
+                 '/api/v1/login',
                  '/api/v1/login/',
-                 '/api/v1/auth')
+                 '/api/v1/auth',
+                 methods=['POST'])
 
 if __name__ == '__main__':
     from db import db

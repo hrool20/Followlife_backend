@@ -11,9 +11,9 @@ class BaseResponse:
         pass
 
     @staticmethod
-    def json(status, status_code, message, result):
+    def json(title, status_code, message, result):
         return make_response(jsonify({
-            'status': status,
+            'title': title,
             'statusCode': status_code,
             'message': message,
             'result': result
@@ -59,6 +59,13 @@ class BaseResponse:
         return BaseResponse.json('Error: ' + error,
                                  500,
                                  'An internal server occurred. Please try again in a few minutes.',
+                                 {})
+
+    @staticmethod
+    def method_not_allowed_response():
+        return BaseResponse.json('Method Not Allowed.',
+                                 405,
+                                 'The method is not allowed for the requested URL.',
                                  {})
 
 

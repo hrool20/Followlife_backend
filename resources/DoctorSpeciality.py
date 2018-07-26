@@ -17,32 +17,32 @@ class DoctorSpeciality(Resource):
                         help='This field cannot be left blank.')
 
     @jwt_required
-    def get(self, _id=None, doc_spec_id=None):
-        if DoctorModel.find_by_id(_id) is None:
+    def get(self, doctor_id=None, _id=None):
+        if DoctorModel.find_by_id(doctor_id) is None:
             return BaseResponse.bad_request_response('Doctor does not exists.', {})
 
-        if doc_spec_id:
-            doctor_speciality = DoctorSpecialityModel.find_by_id(doc_spec_id)
+        if _id:
+            doctor_speciality = DoctorSpecialityModel.find_by_id(_id)
             if doctor_speciality:
                 return BaseResponse.ok_response('Successful.', doctor_speciality.json(only_spec=False))
             return BaseResponse.bad_request_response('Doctor speciality does not exists.', {})
         else:
-            doctor = DoctorModel.find_by_id(_id)
+            doctor = DoctorModel.find_by_id(doctor_id)
             doctor_specialities = list(map(lambda x: x.json(only_spec=True), doctor.doctorSpecialities))
 
             return BaseResponse.ok_response('Successful.', doctor_specialities)
 
     @jwt_required
-    def post(self, _id=None):
+    def post(self, doctor_id=None):
         try:
             data = DoctorSpeciality.parser.parse_args()
 
-            if DoctorModel.find_by_id(_id) is None:
+            if DoctorModel.find_by_id(doctor_id) is None:
                 return BaseResponse.bad_request_response('Doctor does not exists.', {})
-            elif DoctorSpecialityModel.verify_doctor_speciality(_id, data['medicalSpecialityId']):
+            elif DoctorSpecialityModel.verify_doctor_speciality(doctor_id, data['medicalSpecialityId']):
                 return BaseResponse.bad_request_response('This doctor already have this specialities.', {})
 
-            doctor_speciality = DoctorSpecialityModel(doctor_id=_id, medical_speciality_id=data['medicalSpecialityId'])
+            doctor_speciality = DoctorSpecialityModel(doctor_id=doctor_id, medical_speciality_id=data['medicalSpecialityId'])
 
             doctor_speciality.save_to_db()
 
@@ -52,14 +52,14 @@ class DoctorSpeciality(Resource):
             return BaseResponse.server_error_response(unicode(e))
 
     @jwt_required
-    def put(self, _id=None, doc_spec_id=None):
+    def put(self, doctor_id=None, _id=None):
         try:
             data = DoctorSpeciality.parser.parse_args()
 
-            if DoctorModel.find_by_id(_id) is None:
+            if DoctorModel.find_by_id(doctor_id) is None:
                 return BaseResponse.bad_request_response('Doctor does not exists.', {})
 
-            doctor_speciality = DoctorSpecialityModel.find_by_id(doc_spec_id)
+            doctor_speciality = DoctorSpecialityModel.find_by_id(_id)
             if doctor_speciality:
                 doctor_speciality.doctorId = data['doctorId'] if (data['doctorId'] is not None) \
                     else doctor_speciality.doctorId
@@ -76,12 +76,12 @@ class DoctorSpeciality(Resource):
             return BaseResponse.server_error_response(unicode(e))
 
     @jwt_required
-    def delete(self, _id=None, doc_spec_id=None):
+    def delete(self, doctor_id=None, _id=None):
         try:
-            if DoctorModel.find_by_id(_id) is None:
+            if DoctorModel.find_by_id(doctor_id) is None:
                 return BaseResponse.bad_request_response('Doctor does not exists.', {})
 
-            doctor_speciality = DoctorSpecialityModel.find_by_id(doc_spec_id)
+            doctor_speciality = DoctorSpecialityModel.find_by_id(_id)
             if doctor_speciality:
                 doctor_speciality.delete_from_db()
 
