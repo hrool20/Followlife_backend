@@ -62,8 +62,44 @@ app.config['JWT_AUTH_USERNAME_KEY'] = 'email'
 app.config['JWT_SECRET_KEY'] = 'followlife'
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=24)
 jwt = JWTManager(app)
-swagger = Swagger(app)
-api_error = {
+template = {
+    'swagger': '1.0',
+    'info': {
+        'title': 'Followlife API',
+        'description': 'Backend of Followlife api using RESTful',
+        'contact': {
+            'responsibleOrganization': 'Hrool20',
+            'responsibleDeveloper': 'Hrool20',
+            'email': 'hugorosol17@gmail.com',
+            'url': 'www.me.com',
+        },
+        'termsOfService': 'http://me.com/terms',
+        'version': '1.0.0'
+    },
+    'host': 'followlife.me',  # overrides localhost:500
+    'basePath': '/api',  # base bash for blueprint registration
+    'schemes': [
+        'https',
+        'http'
+    ],
+    'operationId': 'followlife_id',
+    'tags': [
+        {
+            'name': 'doctors',
+            'description': 'doctors example'
+        },
+        {
+            'name': 'patients',
+            'description': 'patients example'
+        },
+        {
+            'name': 'resources',
+            'description': 'resources example'
+        }
+    ]
+}
+swagger = Swagger(app, template=template)
+api_error_handler = {
     'MethodNotAllowed': {
         'status': 405,
         'message': 'The method is not allowed for the requested URL.',
@@ -71,7 +107,7 @@ api_error = {
     }
 }
 # noinspection PyTypeChecker
-api = Api(app, errors=api_error)
+api = Api(app, errors=api_error_handler)
 
 
 @jwt.expired_token_loader
@@ -298,8 +334,8 @@ if __name__ == '__main__':
 
 
     def load_tables():
-        db.engine.execute("SET @@auto_increment_increment=1;")
-        db.engine.execute("SET @@auto_increment_offset=1;")
+        db.engine.execute('SET @@auto_increment_increment=1;')
+        db.engine.execute('SET @@auto_increment_offset=1;')
 
         # District
         if DistrictModel.query.first() is None:

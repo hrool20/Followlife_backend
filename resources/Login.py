@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from flasgger.utils import swag_from
 from flask_jwt_extended.utils import create_access_token, create_refresh_token, get_jwt_identity
 from flask_jwt_extended.view_decorators import jwt_refresh_token_required
 
@@ -8,6 +9,7 @@ from flask_restful import Resource, reqparse
 
 from models.Device import DeviceModel
 from models.User import UserModel
+from swagger.Login import swagger_login_dict
 
 
 class Login(Resource):
@@ -30,6 +32,7 @@ class Login(Resource):
                         help='This field cannot be left blank.')
 
     @staticmethod
+    @swag_from(swagger_login_dict)
     def post():
         try:
             data = Login.parser.parse_args()

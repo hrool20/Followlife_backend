@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="60ffc429-8525-488b-9236-4537a32e0f16" name="Default" comment="Heroku deploy files added.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+    <list default="true" id="60ffc429-8525-488b-9236-4537a32e0f16" name="Default" comment="Swagger added but not implemented and Resources updated.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/swagger/Login.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/swagger/__init__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.py" afterPath="$PROJECT_DIR$/app.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/BaseClasses.py" afterPath="$PROJECT_DIR$/models/BaseClasses.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/Address.py" afterPath="$PROJECT_DIR$/resources/Address.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/Appointment.py" afterPath="$PROJECT_DIR$/resources/Appointment.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/DoctorSpeciality.py" afterPath="$PROJECT_DIR$/resources/DoctorSpeciality.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/Login.py" afterPath="$PROJECT_DIR$/resources/Login.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,81 +18,45 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-147">
-              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state relative-caret-position="423">
+              <caret line="107" column="1" lean-forward="true" selection-start-line="107" selection-start-column="1" selection-end-line="107" selection-end-column="1" />
               <folding>
-                <element signature="e#12298#25427#0" expanded="false" />
-                <element signature="e#12493#16927#0" expanded="false" />
-                <element signature="e#17000#17834#0" expanded="false" />
-                <element signature="e#17907#18137#0" expanded="false" />
-                <element signature="e#18237#20997#0" expanded="false" />
-                <element signature="e#21095#21639#0" expanded="false" />
-                <element signature="e#21732#23121#0" expanded="false" />
-                <element signature="e#23194#24618#0" expanded="false" />
-                <element signature="e#24695#24998#0" expanded="false" />
-                <element signature="e#25077#25414#0" expanded="false" />
+                <element signature="e#15#45#0" expanded="true" />
+                <element signature="e#13499#17933#0" expanded="false" />
+                <element signature="e#18006#18840#0" expanded="false" />
+                <element signature="e#18913#19143#0" expanded="false" />
+                <element signature="e#19243#22003#0" expanded="false" />
+                <element signature="e#22101#22645#0" expanded="false" />
+                <element signature="e#22738#24127#0" expanded="false" />
+                <element signature="e#24200#25624#0" expanded="false" />
+                <element signature="e#25701#26004#0" expanded="false" />
+                <element signature="e#26083#26420#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Appointment.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/Appointment.py">
+      <file leaf-file-name="Login.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/swagger/Login.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="210" column="22" lean-forward="false" selection-start-line="210" selection-start-column="22" selection-end-line="210" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-                <element signature="e#347#5330#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Device.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/Device.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="2" column="5" lean-forward="false" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
-              <caret line="3" column="5" lean-forward="false" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+            <state relative-caret-position="441">
+              <caret line="21" column="13" lean-forward="true" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DoctorSpeciality.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/DoctorSpeciality.py">
+      <file leaf-file-name="Login.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/Login.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#59#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Address.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/Address.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="37" column="26" lean-forward="false" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
+            <state relative-caret-position="171">
+              <caret line="35" column="15" lean-forward="true" selection-start-line="35" selection-start-column="15" selection-end-line="35" selection-end-column="15" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BaseClasses.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/BaseClasses.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="21" column="17" lean-forward="false" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -108,6 +69,15 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>\&quot;operationId\&quot;\: \&quot;followlife_id\&quot;\,\n    \'tags\'\: \[\n    \{\n        \'name\'\: \'doctors\'\,\n        \'description\'\: \'doctors example\'\n    \}\,\n    \{\n        \'name\'\: \'patients\'\,\n        \'description\'\: \'patients example\'\n    \}\,\n    \{\n        \'name\'\: \'resources\'\,\n        \'description\'\: \'resources example\'\n    \}\n\]</find>
+      <find>&quot;</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>'</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -158,13 +128,14 @@
         <option value="$PROJECT_DIR$/config/DevelopmentEnvironment.py" />
         <option value="$PROJECT_DIR$/swagger/Dictionaries.py" />
         <option value="$PROJECT_DIR$/api.py" />
-        <option value="$PROJECT_DIR$/resources/Login.py" />
         <option value="$PROJECT_DIR$/models/BaseClasses.py" />
         <option value="$PROJECT_DIR$/resources/Membership.py" />
         <option value="$PROJECT_DIR$/resources/DoctorSpeciality.py" />
         <option value="$PROJECT_DIR$/resources/Appointment.py" />
         <option value="$PROJECT_DIR$/resources/Address.py" />
         <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/resources/Login.py" />
+        <option value="$PROJECT_DIR$/swagger/Login.py" />
       </list>
     </option>
   </component>
@@ -201,6 +172,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="followlife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="followlife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="followlife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="swagger" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -373,7 +358,14 @@
       <option name="project" value="LOCAL" />
       <updated>1532066928732</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Swagger added but not implemented and Resources updated.">
+      <created>1532584030371</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1532584030371</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -383,6 +375,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -396,7 +389,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -426,7 +418,8 @@
     <MESSAGE value="&quot;run.py&quot; added." />
     <MESSAGE value="&quot;uswgi.ini&quot; updated." />
     <MESSAGE value="&quot;app.py&quot; and &quot;run.py&quot; updated. Try to fix jwt error in heroku." />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;app.py&quot; and &quot;run.py&quot; updated. Try to fix jwt error in heroku." />
+    <MESSAGE value="Swagger added but not implemented and Resources updated." />
+    <option name="LAST_COMMIT_MESSAGE" value="Swagger added but not implemented and Resources updated." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -442,29 +435,21 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/db.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="49" column="42" lean-forward="false" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="42" />
           <folding>
-            <element signature="e#12298#25427#0" expanded="false" />
-            <element signature="e#12493#16927#0" expanded="false" />
-            <element signature="e#17000#17834#0" expanded="false" />
-            <element signature="e#17907#18137#0" expanded="false" />
-            <element signature="e#18237#20997#0" expanded="false" />
-            <element signature="e#21095#21639#0" expanded="false" />
-            <element signature="e#21732#23121#0" expanded="false" />
-            <element signature="e#23194#24618#0" expanded="false" />
-            <element signature="e#24695#24998#0" expanded="false" />
-            <element signature="e#25077#25414#0" expanded="false" />
+            <element signature="e#15#45#0" expanded="true" />
+            <element signature="e#13499#17933#0" expanded="false" />
+            <element signature="e#18006#18840#0" expanded="false" />
+            <element signature="e#18913#19143#0" expanded="false" />
+            <element signature="e#19243#22003#0" expanded="false" />
+            <element signature="e#22101#22645#0" expanded="false" />
+            <element signature="e#22738#24127#0" expanded="false" />
+            <element signature="e#24200#25624#0" expanded="false" />
+            <element signature="e#25701#26004#0" expanded="false" />
+            <element signature="e#26083#26420#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -743,14 +728,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/swagger/Dictionaries.py" />
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/run.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
@@ -775,16 +752,6 @@
         <state relative-caret-position="336">
           <caret line="21" column="17" lean-forward="false" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/Login.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1302">
-          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#29#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -826,7 +793,7 @@
         <state relative-caret-position="346">
           <caret line="210" column="22" lean-forward="false" selection-start-line="210" selection-start-column="22" selection-end-line="210" selection-end-column="22" />
           <folding>
-            <element signature="e#0#29#0" expanded="true" />
+            <element signature="e#0#29#0" expanded="false" />
             <element signature="e#347#5330#0" expanded="false" />
           </folding>
         </state>
@@ -837,37 +804,63 @@
         <state relative-caret-position="84">
           <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
           <folding>
-            <element signature="e#0#59#0" expanded="true" />
+            <element signature="e#0#59#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/Address.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="37" column="26" lean-forward="false" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
+        <state relative-caret-position="987">
+          <caret line="47" column="17" lean-forward="true" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
           <folding>
-            <element signature="e#0#29#0" expanded="true" />
+            <element signature="e#0#29#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-147">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        <state relative-caret-position="423">
+          <caret line="107" column="1" lean-forward="true" selection-start-line="107" selection-start-column="1" selection-end-line="107" selection-end-column="1" />
           <folding>
-            <element signature="e#12298#25427#0" expanded="false" />
-            <element signature="e#12493#16927#0" expanded="false" />
-            <element signature="e#17000#17834#0" expanded="false" />
-            <element signature="e#17907#18137#0" expanded="false" />
-            <element signature="e#18237#20997#0" expanded="false" />
-            <element signature="e#21095#21639#0" expanded="false" />
-            <element signature="e#21732#23121#0" expanded="false" />
-            <element signature="e#23194#24618#0" expanded="false" />
-            <element signature="e#24695#24998#0" expanded="false" />
-            <element signature="e#25077#25414#0" expanded="false" />
+            <element signature="e#15#45#0" expanded="true" />
+            <element signature="e#13499#17933#0" expanded="false" />
+            <element signature="e#18006#18840#0" expanded="false" />
+            <element signature="e#18913#19143#0" expanded="false" />
+            <element signature="e#19243#22003#0" expanded="false" />
+            <element signature="e#22101#22645#0" expanded="false" />
+            <element signature="e#22738#24127#0" expanded="false" />
+            <element signature="e#24200#25624#0" expanded="false" />
+            <element signature="e#25701#26004#0" expanded="false" />
+            <element signature="e#26083#26420#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/Login.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="35" column="15" lean-forward="true" selection-start-line="35" selection-start-column="15" selection-end-line="35" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/swagger/Login.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="21" column="13" lean-forward="true" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
